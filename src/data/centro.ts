@@ -124,13 +124,13 @@ export const centroData: CentroConfig = {
     textoCompleto: 'Placeta Gutierre de Cetina, Zaidín, 18007 Granada',
   },
   coordenadas: {
-    lat: 37.1585,
-    lng: -3.5938,
+    lat: 37.1567148,
+    lng: -3.5974319,
   },
   googleMaps: {
-    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3180.200155250493!2d-3.5960000!3d37.1585000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fc82d5a7d7ef%3A0x6b4f71a067a9c7b!2sPlaceta%20Gutierre%20de%20Cetina%2C%2018007%20Granada!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses',
-    comoLlegarUrl: 'https://maps.google.com/?q=Placeta+Gutierre+de+Cetina,+18007+Granada',
-    reviewsUrl: 'https://maps.google.com/?q=Placeta+Gutierre+de+Cetina,+18007+Granada',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3180.200155250493!2d-3.6000122!3d37.1567148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd71fb819303117b%3A0x232b7492d5c97a63!2sASAP%20Training%20Center!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses',
+    comoLlegarUrl: 'https://maps.app.goo.gl/xiqtVQZKJj9zMzRb9',
+    reviewsUrl: 'https://maps.app.goo.gl/xiqtVQZKJj9zMzRb9',
   },
   rating: {
     puntuacion: 5.0,
@@ -332,6 +332,6 @@ export const centroData: CentroConfig = {
   ],
   redes: {
     instagram: 'https://instagram.com/asaptraining',
-    googleMaps: 'https://maps.google.com/?q=Placeta+Gutierre+de+Cetina,+18007+Granada',
+    googleMaps: 'https://maps.app.goo.gl/xiqtVQZKJj9zMzRb9',
   },
 };
