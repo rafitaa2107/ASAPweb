@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { centroData } from '../data/centro';
+---
+
+<Layout title={`Política de Privacidad | ${centroData.nombre}`} canonicalPath="/privacidad">
+  <Header />
+  <main class="flex-1 max-w-4xl mx-auto px-margin-mobile lg:px-margin pt-32 pb-space-xl text-on-surface">
+    <div class="mb-space-lg pb-space-sm border-b border-surface-variant">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        PROTECCIÓN DE DATOS (RGPD Y LOPDGDD)
+      </span>
+      <h1 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+        POLÍTICA DE PRIVACIDAD
+      </h1>
+      <p class="font-body-sm text-outline mt-2">
+        Última actualización: [REVISAR: Octubre 2026]
+      </p>
+    </div>
+
+    <div class="space-y-space-md font-body-md text-on-surface-variant leading-relaxed">
+      <section class="bg-surface-container p-space-md border border-outline-variant/30">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase mb-2">
+          1. RESPONSABLE DEL TRATAMIENTO
+        </h2>
+        <ul class="list-disc pl-5 space-y-1 font-body-sm text-on-surface">
+          <li><strong>Responsable:</strong> {centroData.razonSocial} [REVISAR]</li>
+          <li><strong>CIF:</strong> {centroData.cif} [REVISAR]</li>
+          <li><strong>Dirección:</strong> {centroData.direccion.textoCompleto}</li>
+          <li><strong>Contacto de Privacidad:</strong> {centroData.email}</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          2. FINALIDAD Y DATOS RECOGIDOS
+        </h2>
+        <p>
+          En {centroData.nombre} respetamos su privacidad y minimizamos el tratamiento de datos personales:
+        </p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>
+            <strong>Formulario de cita / valoración:</strong> Los datos introducidos en el formulario de la web (nombre, teléfono, objetivo y notas) <strong>no se envían ni se guardan en ningún servidor o base de datos web</strong>. Se procesan de forma inmediata en el dispositivo del usuario para componer un mensaje en la aplicación de mensajería WhatsApp, que el usuario decide libremente enviar.
+          </li>
+          <li>
+            <strong>Comunicaciones por WhatsApp o teléfono:</strong> Si contacta directamente con nosotros, trataremos sus datos exclusivamente para responder a su solicitud, coordinar su sesión de valoración o gestionar su inscripción.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          3. BASE JURÍDICA DEL TRATAMIENTO
+        </h2>
+        <p>
+          La base legal para el tratamiento de sus datos es el consentimiento explícito del interesado al iniciar la conversación por WhatsApp o contactar por vía telefónica, así como la aplicación de medidas precontractuales a petición del usuario.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          4. CONSERVACIÓN DE DATOS
+        </h2>
+        <p>
+          Los datos proporcionados en consultas previas se conservarán únicamente durante el tiempo necesario para resolver su solicitud. En caso de formalizar el alta como atleta, sus datos pasarán a formar parte de su ficha de socio conforme a las obligaciones legales y tributarias.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          5. DERECHOS DEL USUARIO
+        </h2>
+        <p>
+          Puede ejercer en cualquier momento sus derechos de acceso, rectificación, supresión, limitación del tratamiento, portabilidad y oposición dirigiéndose por escrito a {centroData.email} o en nuestra dirección física en Placeta Gutierre de Cetina, 18007 Granada, adjuntando copia de su documento de identidad. Asimismo, tiene derecho a reclamar ante la Agencia Española de Protección de Datos (AEPD).
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-space-xl pt-space-md border-t border-surface-variant">
+      <a href="/" class="inline-flex items-center gap-space-xs text-primary hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors">
+        ← Volver a la portada principal
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

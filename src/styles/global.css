@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*, ::before, ::after {
+  border-radius: 0px !important;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #121416;
+  color: #e2e2e5;
+  font-family: 'Inter', sans-serif;
+}
+
+::selection {
+  background-color: #ee6458;
+  color: #5c0003;
+}
+
+/* Accessible high-contrast focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #ee6458 !important;
+  outline-offset: 2px !important;
+}

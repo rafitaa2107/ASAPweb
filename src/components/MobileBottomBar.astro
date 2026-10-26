@@ -1,0 +1,34 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<aside class="fixed bottom-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-xl border-t border-surface-variant shadow-[0_-4px_20px_rgba(0,0,0,0.6)] md:hidden">
+  <div class="flex items-center justify-between gap-space-sm px-gutter-mobile py-2.5">
+    <!-- Llamar button -->
+    <a
+      class="flex-1 h-12 bg-surface-container-high active:bg-surface-variant text-on-surface flex items-center justify-center gap-space-xs transition-colors border border-outline-variant/40"
+      href={`tel:${centroData.telefono}`}
+      aria-label={`Llamar al ${centroData.telefonoFormateado}`}
+    >
+      <Icon name="call" class="text-secondary" size={20} />
+      <span class="font-headline-md text-headline-md tracking-wider uppercase leading-none">
+        Llamar
+      </span>
+    </a>
+
+    <!-- WhatsApp button -->
+    <a
+      class="flex-[1.6] h-12 bg-primary-container active:bg-inverse-primary text-on-primary flex items-center justify-center gap-space-xs transition-colors border border-primary-container"
+      href={`https://wa.me/${centroData.whatsapp}?text=${encodeURIComponent('¡Hola ASAP Training Center! Quiero consultar sobre horarios y reservar mi valoración técnica.')}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Abrir WhatsApp oficial de ASAP Training Center"
+    >
+      <Icon name="whatsapp" size={20} />
+      <span class="font-headline-md text-headline-md tracking-wider uppercase leading-none">
+        WhatsApp
+      </span>
+    </a>
+  </div>
+</aside>

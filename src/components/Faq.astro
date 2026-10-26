@@ -1,0 +1,39 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container py-space-xl border-t border-surface-variant" id="faq">
+  <div class="max-w-4xl mx-auto px-margin-mobile lg:px-margin">
+    <div class="mb-space-xl text-center">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        06 / RESOLUCIÓN TÉCNICA
+      </span>
+      <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none mb-space-xs">
+        PREGUNTAS FRECUENTES
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Respuestas directas y claras a las dudas más habituales antes de tu primer día.
+      </p>
+    </div>
+
+    <!-- FAQ Accordions -->
+    <div class="space-y-space-sm" id="faq-container">
+      {
+        centroData.faqs.map((faq) => (
+          <details class="group bg-surface p-space-md border border-outline-variant/30 open:border-primary-container/40 open:bg-surface-container-high transition-colors">
+            <summary class="flex items-center justify-between cursor-pointer list-none font-title-technical text-title-technical text-on-surface focus:outline-none select-none">
+              <span class="pr-space-md">{faq.pregunta}</span>
+              <span class="text-outline group-open:rotate-180 transition-transform duration-200 shrink-0">
+                <Icon name="expand_more" size={20} />
+              </span>
+            </summary>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-space-sm pt-space-xs border-t border-surface-variant/40 leading-relaxed">
+              {faq.respuesta}
+            </p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

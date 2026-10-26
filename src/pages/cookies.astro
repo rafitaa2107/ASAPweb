@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { centroData } from '../data/centro';
+---
+
+<Layout title={`Política de Cookies | ${centroData.nombre}`} canonicalPath="/cookies">
+  <Header />
+  <main class="flex-1 max-w-4xl mx-auto px-margin-mobile lg:px-margin pt-32 pb-space-xl text-on-surface">
+    <div class="mb-space-lg pb-space-sm border-b border-surface-variant">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        INFORMACIÓN SOBRE COOKIES
+      </span>
+      <h1 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+        POLÍTICA DE COOKIES
+      </h1>
+      <p class="font-body-sm text-outline mt-2">
+        Última actualización: [REVISAR: Octubre 2026]
+      </p>
+    </div>
+
+    <div class="space-y-space-md font-body-md text-on-surface-variant leading-relaxed">
+      <section class="bg-surface-container p-space-md border border-outline-variant/30">
+        <h2 class="font-title-technical text-title-technical text-primary-container uppercase mb-2">
+          COMPROMISO DE NAVEGACIÓN SIN RASTREO
+        </h2>
+        <p class="font-body-md text-on-surface leading-relaxed">
+          Este sitio web <strong>NO utiliza cookies publicitarias, ni cookies de seguimiento o analítica de terceros</strong> (como Google Analytics, Meta Pixel u otros rastreadores). Por este motivo, su navegación es completamente anónima y no requiere de un banner invasivo de consentimiento de cookies conforme a las directrices de la AEPD y el RGPD.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          1. ¿QUÉ SON LAS COOKIES?
+        </h2>
+        <p>
+          Una cookie es un pequeño archivo que se descarga en su dispositivo al acceder a determinadas páginas web. Permiten a un sitio web, entre otras cosas, almacenar y recuperar información sobre los hábitos de navegación de un usuario o de su equipo.
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          2. COOKIES UTILIZADAS EN ESTE SITIO WEB
+        </h2>
+        <p>
+          En {centroData.nombre} apostamos por la privacidad radical y la velocidad máxima:
+        </p>
+        <ul class="list-disc pl-5 space-y-1 font-body-sm text-on-surface">
+          <li>
+            <strong>Cookies técnicas estrictamente necesarias:</strong> Aquellas requeridas exclusivamente para permitir la comunicación entre el equipo del usuario y la red, o prestar un servicio expresamente solicitado por el usuario. Están exentas del requisito de consentimiento.
+          </li>
+          <li>
+            <strong>Cookies de terceros:</strong> Si decide activar voluntariamente el mapa interactivo de Google Maps pulsando sobre el botón de activación, Google puede establecer sus propias cookies técnicas o de preferencias de visualización bajo su propia política de privacidad.
+          </li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="font-title-technical text-title-technical text-on-surface uppercase">
+          3. CÓMO CONFIGURAR O BLOQUEAR COOKIES
+        </h2>
+        <p>
+          Puede usted permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones del navegador instalado en su ordenador o teléfono móvil (Chrome, Firefox, Safari, Edge, etc.).
+        </p>
+      </section>
+    </div>
+
+    <div class="mt-space-xl pt-space-md border-t border-surface-variant">
+      <a href="/" class="inline-flex items-center gap-space-xs text-primary hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors">
+        ← Volver a la portada principal
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

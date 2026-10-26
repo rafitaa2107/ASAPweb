@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Servicios from '../components/Servicios.astro';
+import Precios from '../components/Precios.astro';
+import Metodo from '../components/Metodo.astro';
+import Opiniones from '../components/Opiniones.astro';
+import Contacto from '../components/Contacto.astro';
+import Faq from '../components/Faq.astro';
+import Ubicacion from '../components/Ubicacion.astro';
+import Footer from '../components/Footer.astro';
+import MobileBottomBar from '../components/MobileBottomBar.astro';
+---
+
+<Layout>
+  <Header />
+  <main class="flex-1 w-full overflow-x-hidden">
+    <Hero />
+    <TrustBar />
+    <Servicios />
+    <Precios />
+    <Metodo />
+    <Opiniones />
+    <Contacto />
+    <Faq />
+    <Ubicacion />
+  </main>
+  <Footer />
+  <MobileBottomBar />
+</Layout>

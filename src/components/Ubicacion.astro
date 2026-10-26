@@ -1,0 +1,157 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container-lowest py-space-xl border-t border-surface-variant" id="ubicacion">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <div class="mb-space-lg pb-space-sm border-b border-surface-variant">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        07 / LOCALIZACIÓN TÉCNICA
+      </span>
+      <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+        UBICACIÓN EN EL ZAIDÍN
+      </h2>
+      <p class="font-body-md text-body-md text-outline mt-space-xs max-w-2xl leading-relaxed">
+        En el corazón del Zaidín (Granada), con excelente conexión peatonal, aparcamiento cercano y transporte público.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
+      <!-- Technical Map Container with Lazy Click-to-Load -->
+      <div class="lg:col-span-8 bg-surface-container min-h-[420px] relative overflow-hidden border border-outline-variant/40" id="map-wrapper">
+        <!-- Static Placeholder Container -->
+        <div id="map-placeholder" class="relative w-full h-full min-h-[420px] cursor-pointer group">
+          <img
+            src="/fotos/mapa-estatico.webp"
+            alt="Plano de ubicación de ASAP Training Center en Placeta Gutierre de Cetina, Zaidín, Granada"
+            class="w-full h-full min-h-[420px] object-cover filter brightness-90 group-hover:brightness-100 transition-all duration-300"
+            width="800"
+            height="450"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <!-- Tactical Pin Metadata Box -->
+          <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm p-space-md max-w-xs border border-outline-variant/60 shadow-lg pointer-events-none">
+            <div class="flex items-center gap-space-xs mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-pulse"></span>
+              <span class="font-label-caps text-label-caps uppercase text-primary-container tracking-widest">
+                PUNTO DE CONTACTO
+              </span>
+            </div>
+            <p class="font-title-technical text-body-sm text-on-surface leading-snug">
+              {centroData.direccion.textoCompleto}
+            </p>
+            <p class="font-body-sm text-xs text-outline mt-1">
+              Haz clic para cargar el mapa interactivo de Google Maps
+            </p>
+          </div>
+
+          <!-- Click to load overlay button -->
+          <div class="absolute inset-0 flex items-center justify-center bg-black/40 group-hover:bg-black/20 transition-colors">
+            <button
+              type="button"
+              id="btn-load-map"
+              class="px-space-md py-space-sm bg-surface-container-lowest/95 hover:bg-primary-container text-on-surface hover:text-on-primary font-headline-md text-headline-md uppercase tracking-wider flex items-center gap-space-xs border border-outline-variant transition-colors shadow-md"
+            >
+              <Icon name="location_on" class="text-primary-container" size={20} />
+              <span>ACTIVAR MAPA INTERACTIVO</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hidden iframe container, populated dynamically on click -->
+        <div id="map-iframe-container" class="hidden w-full h-full min-h-[420px]">
+          <iframe
+            id="google-maps-iframe"
+            title="Mapa interactivo de ASAP Training Center"
+            class="w-full h-full min-h-[420px] border-0"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src=""
+          ></iframe>
+        </div>
+      </div>
+
+      <!-- Right Column: Schedule & Directions -->
+      <div class="lg:col-span-4 flex flex-col justify-between space-y-space-md">
+        <!-- Schedule Box -->
+        <div class="p-space-lg bg-surface-container border border-outline-variant/30">
+          <div class="flex items-center gap-space-xs mb-space-sm">
+            <Icon name="schedule" class="text-primary-container" size={18} />
+            <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">
+              HORARIO DE APERTURA
+            </span>
+          </div>
+
+          <div class="space-y-2 font-body-sm text-body-sm">
+            <div class="flex justify-between py-1 border-b border-surface-variant/40">
+              <span class="text-on-surface-variant">Lunes a Viernes</span>
+              <span class="font-title-technical text-on-surface">07:00 – 22:00</span>
+            </div>
+            <div class="flex justify-between py-1 border-b border-surface-variant/40">
+              <span class="text-outline">Sábados</span>
+              <span class="text-outline uppercase font-label-caps">Cerrado</span>
+            </div>
+            <div class="flex justify-between py-1">
+              <span class="text-outline">Domingos y Festivos</span>
+              <span class="text-outline uppercase font-label-caps">Cerrado</span>
+            </div>
+          </div>
+
+          <div class="mt-space-md pt-space-sm border-t border-surface-variant text-xs text-outline">
+            Entrada libre mediante app para atletas registrados según reserva.
+          </div>
+        </div>
+
+        <!-- Directions CTA Card -->
+        <div class="p-space-lg bg-surface-container border border-outline-variant/30 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-space-xs mb-space-xs">
+              <Icon name="directions" class="text-secondary" size={18} />
+              <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">
+                CÓMO LLEGAR
+              </span>
+            </div>
+            <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-space-xs">
+              ACCESO RÁPIDO
+            </h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md leading-relaxed">
+              Situado en Placeta Gutierre de Cetina. Fácil acceso desde Av. de Dílar y Av. de América. Metro: parada Andrés Segovia o Palacio de Deportes.
+            </p>
+          </div>
+
+          <a
+            href={centroData.googleMaps.comoLlegarUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full py-space-sm bg-primary-container hover:bg-inverse-primary text-on-primary font-headline-md text-headline-md uppercase tracking-wider flex items-center justify-center gap-space-xs transition-colors border border-primary-container"
+          >
+            <Icon name="directions" size={18} />
+            <span>CÓMO LLEGAR EN GOOGLE MAPS</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ embedUrl: centroData.googleMaps.embedUrl }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const placeholder = document.getElementById('map-placeholder');
+    const iframeContainer = document.getElementById('map-iframe-container');
+    const iframe = document.getElementById('google-maps-iframe');
+
+    function loadMap() {
+      if (!iframeContainer || !placeholder || !iframe) return;
+      iframe.src = embedUrl;
+      placeholder.classList.add('hidden');
+      iframeContainer.classList.remove('hidden');
+    }
+
+    if (placeholder) {
+      placeholder.addEventListener('click', loadMap);
+    }
+  });
+</script>

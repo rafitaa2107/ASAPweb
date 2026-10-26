@@ -1,0 +1,111 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container py-space-xl border-t border-surface-variant" id="precios">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <!-- Section Title -->
+    <div class="text-center max-w-2xl mx-auto mb-space-xl">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        02 / TARIFAS TRANSPARENTES
+      </span>
+      <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none mb-space-sm">
+        SIN MATRÍCULA NI PERMANENCIA OCULTA
+      </h2>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+        Pagas por mes natural con total libertad. Todos los planes incluyen valoración física inicial y reserva mediante aplicación móvil.
+      </p>
+    </div>
+
+    <!-- Pricing Grid (3 Plans) -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-space-md items-stretch mb-space-lg">
+      {
+        centroData.tarifas.map((t) => (
+          <div
+            class={`p-space-xl flex flex-col justify-between transition-all ${
+              t.destacada
+                ? 'bg-surface-container-high border-2 border-primary-container relative shadow-lg'
+                : 'bg-surface border border-outline-variant/40'
+            }`}
+          >
+            {t.destacada && (
+              <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-space-sm py-0.5 bg-primary-container text-surface-container-lowest font-bold font-label-caps text-[11px] uppercase tracking-widest">
+                MÁS ELEGIDO
+              </div>
+            )}
+
+            <div>
+              <div class="flex items-center justify-between mb-space-md">
+                <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">
+                  {t.frecuencia}
+                </span>
+                <span class="font-body-sm text-body-sm text-secondary font-title-technical">
+                  SIN MATRÍCULA
+                </span>
+              </div>
+
+              <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-space-xs">
+                {t.nombre}
+              </h3>
+
+              <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-lg leading-relaxed">
+                {t.descripcion}
+              </p>
+
+              <div class="flex items-baseline gap-1 mb-space-lg pb-space-md border-b border-surface-variant">
+                <span class="font-display-hero-mobile text-display-hero-mobile text-on-surface leading-none">
+                  {t.precio}
+                </span>
+                <span class="font-label-caps text-label-caps text-outline uppercase">
+                  {t.periodo}
+                </span>
+              </div>
+
+              <ul class="space-y-space-sm mb-space-xl" role="list">
+                {t.caracteristicas.map((c) => (
+                  <li class="flex items-start gap-space-xs text-on-surface font-body-sm">
+                    <Icon name="check" class="text-primary-container shrink-0 mt-0.5" size={16} />
+                    <span>{c}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <a
+                href="#contacto"
+                class={`w-full py-space-sm flex items-center justify-center gap-space-xs font-headline-md text-headline-md uppercase tracking-wider transition-colors ${
+                  t.destacada
+                    ? 'bg-primary-container hover:bg-inverse-primary text-on-primary'
+                    : 'bg-surface-container-highest hover:bg-surface-container-high text-on-surface border border-outline-variant/60'
+                }`}
+              >
+                <span>RESERVAR ESTE PLAN</span>
+                <Icon name="arrow_forward" size={16} />
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Direct Consultation Action -->
+    <div class="p-space-md bg-surface border border-outline-variant/30 flex flex-col sm:flex-row items-center justify-between gap-space-md">
+      <div class="flex items-center gap-space-sm text-outline font-label-caps text-label-caps uppercase tracking-wider text-center sm:text-left">
+        <Icon name="shield" class="text-secondary shrink-0" size={20} />
+        <span>CANCELACIÓN LIBRE · SIN COBROS SORPRESA · ASESORAMIENTO DIRECTO</span>
+      </div>
+
+      <a
+        href={`https://wa.me/${centroData.whatsapp}?text=${encodeURIComponent('Hola ASAP! Tengo dudas sobre qué tarifa o plan de entrenamiento se adapta mejor a mis objetivos.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-space-xs text-secondary hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors"
+      >
+        <Icon name="whatsapp" size={18} />
+        <span>CONSULTAR POR WHATSAPP</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<header class="fixed top-0 left-0 w-full z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-variant">
+  <div class="h-20 max-w-7xl mx-auto px-margin-mobile lg:px-margin flex items-center justify-between gap-space-md">
+    <!-- Brand Logo -->
+    <div class="flex items-center gap-space-sm">
+      <a class="flex items-center gap-space-sm focus:outline-none focus:ring-1 focus:ring-primary-container" href="#hero">
+        <div class="w-9 h-9 bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md">
+          A
+        </div>
+        <div class="flex flex-col leading-none">
+          <span class="font-headline-md text-headline-md tracking-wider text-on-surface uppercase">ASAP</span>
+          <span class="font-label-caps text-label-caps tracking-widest text-outline uppercase">TRAINING CENTER</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden xl:flex items-center gap-space-lg" aria-label="Navegación principal">
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#servicios">Servicios</a>
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#precios">Tarifas</a>
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#metodo">Método</a>
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#opiniones">Reseñas</a>
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#contacto">Contacto</a>
+      <a class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors py-space-xs" href="#ubicacion">Ubicación</a>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="flex items-center gap-space-md">
+      <a
+        class="hidden md:flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface border border-outline-variant"
+        href={`tel:${centroData.telefono}`}
+        aria-label={`Llamar al centro ${centroData.telefonoFormateado}`}
+      >
+        <Icon name="call" class="text-primary-container" size={18} />
+        <span class="font-label-caps text-label-caps tracking-widest text-on-surface">{centroData.telefonoFormateado}</span>
+      </a>
+
+      <a
+        class="inline-flex items-center justify-center px-space-md py-space-sm bg-primary-container hover:bg-inverse-primary text-on-primary font-headline-md text-headline-md uppercase tracking-wider transition-colors border border-primary-container"
+        href="#contacto"
+      >
+        <span>RESERVAR PRUEBA</span>
+      </a>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,113 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant pt-space-xl pb-24 md:pb-space-xl">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-xl">
+      <!-- Col 1: Brand & Identity -->
+      <div class="flex flex-col gap-space-sm">
+        <div class="flex items-center gap-space-sm">
+          <div class="w-8 h-8 bg-primary-container text-on-primary flex items-center justify-center font-headline-md text-headline-md">
+            A
+          </div>
+          <div class="flex flex-col leading-none">
+            <span class="font-headline-md text-headline-md text-on-surface uppercase tracking-wider">
+              {centroData.nombre}
+            </span>
+            <span class="font-label-caps text-[10px] text-outline uppercase tracking-widest">
+              {centroData.tagline}
+            </span>
+          </div>
+        </div>
+
+        <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+          {centroData.subtitulo}
+        </p>
+
+        <div class="flex flex-col gap-1 text-xs text-outline pt-space-xs">
+          <span>{centroData.direccion.textoCompleto}</span>
+          <span>Tel: {centroData.telefonoFormateado} · {centroData.email}</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Services Quick Links -->
+      <div class="flex flex-col gap-space-xs">
+        <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs">
+          PROGRAMACIÓN TÉCNICA
+        </span>
+        {
+          centroData.servicios.map((s) => (
+            <a
+              href="#servicios"
+              class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5"
+            >
+              {s.nombre}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Col 3: Practical Info -->
+      <div class="flex flex-col gap-space-xs">
+        <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs">
+          ACCESOS Y TARIFAS
+        </span>
+        <a href="#precios" class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5">
+          Tarifas Transparentes
+        </a>
+        <a href="#metodo" class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5">
+          Protocolo en 3 Pasos
+        </a>
+        <a href="#opiniones" class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5">
+          Opiniones de Atletas
+        </a>
+        <a href="#faq" class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5">
+          Preguntas Frecuentes
+        </a>
+        <a href="#ubicacion" class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors uppercase py-0.5">
+          Cómo Llegar al Box
+        </a>
+      </div>
+
+      <!-- Col 4: Legal & Fiscal Data -->
+      <div class="flex flex-col gap-space-xs">
+        <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs">
+          REGISTRO FISCAL Y LEGAL
+        </span>
+        <p class="font-body-sm text-body-sm text-outline">{centroData.razonSocial}</p>
+        <p class="font-body-sm text-body-sm text-outline">CIF: {centroData.cif}</p>
+        <p class="font-body-sm text-body-sm text-outline">Inscripción Mercantil de Granada</p>
+
+        <div class="flex flex-col gap-1 mt-space-sm pt-space-xs border-t border-surface-variant">
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors uppercase py-2 inline-block" href="/aviso-legal">
+            Aviso Legal
+          </a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors uppercase py-2 inline-block" href="/privacidad">
+            Política de Privacidad
+          </a>
+          <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors uppercase py-2 inline-block" href="/cookies">
+            Política de Cookies
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom line -->
+    <div class="pt-space-lg border-t border-surface-variant flex flex-col md:flex-row items-center justify-between gap-space-md">
+      <p class="font-label-caps text-label-caps text-outline tracking-wider uppercase text-center md:text-left">
+        © {new Date().getFullYear()} {centroData.nombre}. TODOS LOS DERECHOS RESERVADOS.
+      </p>
+      <div class="flex items-center gap-space-md">
+        <span class="font-label-caps text-label-caps text-outline tracking-widest uppercase">
+          SISTEMA TÉCNICO // ZAIDÍN [GR]
+        </span>
+        <div class="h-3 w-px bg-surface-variant"></div>
+        <span class="font-label-caps text-label-caps text-primary-container uppercase">
+          SEC_01 PROTOCOL
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,105 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container-lowest py-space-xl" id="servicios">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <!-- Section Header -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl pb-space-md border-b border-surface-variant">
+      <div>
+        <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+          01 / PROGRAMAS DE RENDIMIENTO
+        </span>
+        <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+          SERVICIOS DISEÑADOS PARA TU PROGRESO
+        </h2>
+      </div>
+      <p class="font-body-sm text-body-sm text-outline max-w-md leading-relaxed">
+        Estructura de entrenamiento dividida por metodología y objetivo biomecánico. Sin sesiones improvisadas: programación técnica progresiva mes a mes.
+      </p>
+    </div>
+
+    <!-- 6 Technical Service Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+      {
+        centroData.servicios.map((s) => (
+          <article class="bg-surface-container p-space-lg flex flex-col justify-between border border-outline-variant/30 hover:border-primary-container/50 hover:bg-surface-container-high transition-colors">
+            <div>
+              <div class="flex items-center justify-between mb-space-sm">
+                <span class="px-space-xs py-0.5 bg-surface-container-lowest text-primary font-label-caps text-label-caps uppercase border border-outline-variant/40">
+                  {s.badge}
+                </span>
+                <span class="font-label-caps text-label-caps text-outline tracking-wider">
+                  {s.codigo}
+                </span>
+              </div>
+
+              <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-space-xs">
+                {s.nombre}
+              </h3>
+
+              <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md leading-relaxed">
+                {s.descripcion}
+              </p>
+
+              <div class="space-y-1.5 pt-space-sm border-t border-surface-variant/40 mb-space-md">
+                {s.especificaciones.map((spec) => (
+                  <div class="flex items-center gap-space-xs text-outline font-body-sm text-xs">
+                    <Icon name="check" class="text-secondary shrink-0" size={14} />
+                    <span>{spec}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="pt-space-md border-t border-surface-variant/60 flex items-center justify-between gap-space-sm">
+              <div class="flex flex-col">
+                <span class="font-title-technical text-body-md text-on-surface">{s.precio}</span>
+                <span class="font-label-caps text-[11px] text-outline uppercase">{s.duracion}</span>
+              </div>
+
+              <a
+                href="#contacto"
+                data-select-service={s.nombre}
+                class="service-cta inline-flex items-center gap-1.5 px-space-sm py-1.5 bg-surface-container-lowest hover:bg-primary-container text-on-surface hover:text-on-primary font-label-caps text-label-caps uppercase tracking-wider transition-colors border border-outline-variant"
+              >
+                <span>Pedir cita</span>
+                <Icon name="arrow_forward" size={12} />
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const ctas = document.querySelectorAll('.service-cta');
+    ctas.forEach((btn) => {
+      btn.addEventListener('click', (e) => {
+        const serviceName = btn.getAttribute('data-select-service');
+        if (serviceName) {
+          const select = document.getElementById('f-goal');
+          if (select) {
+            // Buscamos si existe opción coincidente
+            let matched = false;
+            for (let i = 0; i < select.options.length; i++) {
+              if (select.options[i].text.toLowerCase().includes(serviceName.toLowerCase()) || 
+                  serviceName.toLowerCase().includes(select.options[i].text.toLowerCase())) {
+                select.selectedIndex = i;
+                matched = true;
+                break;
+              }
+            }
+            if (!matched) {
+              select.value = serviceName;
+            }
+          }
+        }
+      });
+    });
+  });
+</script>

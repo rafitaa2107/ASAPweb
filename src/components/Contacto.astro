@@ -1,0 +1,261 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container-lowest py-space-xl border-t border-surface-variant" id="contacto">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <div class="mb-space-lg pb-space-sm border-b border-surface-variant">
+      <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+        05 / RESERVA DE PLAZA Y VALORACIÓN
+      </span>
+      <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+        EMPIEZA A ENTRENAR HOY EN EL ZAIDÍN
+      </h2>
+      <p class="font-body-md text-body-md text-outline mt-space-xs max-w-2xl leading-relaxed">
+        Rellena el formulario técnico o escríbenos directamente para agendar tu valoración inicial sin coste ni compromiso.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl">
+      <!-- Left: Form -->
+      <div class="lg:col-span-7 bg-surface-container p-space-lg sm:p-space-xl border border-outline-variant/40">
+        <div class="mb-space-md">
+          <span class="font-label-caps text-label-caps uppercase text-primary-container tracking-widest block mb-1">
+            SOLICITUD TÉCNICA DIRECTA
+          </span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant">
+            Al enviar, se abrirá WhatsApp con los datos ya estructurados para coordinar tu cita inmediatamente.
+          </p>
+        </div>
+
+        <form class="space-y-space-md" id="lead-form" novalidate>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+            <div>
+              <label class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-xs" for="f-name">
+                Nombre Completo *
+              </label>
+              <input
+                class="w-full bg-surface-container-low text-on-surface font-body-md px-space-md py-space-sm border border-outline-variant/60 focus:outline-none focus:border-primary-container transition-colors"
+                id="f-name"
+                name="name"
+                placeholder="Ej. Carlos M. Sánchez"
+                required
+                type="text"
+                autocomplete="name"
+              />
+              <span id="err-name" class="hidden text-error font-label-caps text-[11px] mt-1 uppercase">Por favor, introduce tu nombre</span>
+            </div>
+
+            <div>
+              <label class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-xs" for="f-phone">
+                Teléfono Móvil *
+              </label>
+              <input
+                class="w-full bg-surface-container-low text-on-surface font-body-md px-space-md py-space-sm border border-outline-variant/60 focus:outline-none focus:border-primary-container transition-colors"
+                id="f-phone"
+                name="phone"
+                placeholder="Ej. 641 41 70 21"
+                required
+                type="tel"
+                autocomplete="tel"
+              />
+              <span id="err-phone" class="hidden text-error font-label-caps text-[11px] mt-1 uppercase">Introduce un número de teléfono válido</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-xs" for="f-goal">
+              Servicio u Objetivo Principal *
+            </label>
+            <select
+              class="w-full bg-surface-container-low text-on-surface font-body-md px-space-md py-space-sm border border-outline-variant/60 focus:outline-none focus:border-primary-container transition-colors"
+              id="f-goal"
+              name="goal"
+              required
+            >
+              {centroData.servicios.map((s) => (
+                <option value={s.nombre}>{s.nombre} ({s.codigo})</option>
+              ))}
+              <option value="Ganar fuerza y masa muscular">Ganar fuerza y masa muscular</option>
+              <option value="Perder grasa y acondicionamiento">Perder grasa y acondicionamiento</option>
+              <option value="Recuperación de dolor o lesión">Recuperación de dolor o lesión</option>
+              <option value="Preparación de oposiciones">Preparación de oposiciones</option>
+            </select>
+          </div>
+
+          <div>
+            <span class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-xs">
+              Franja Horaria de Preferencia *
+            </span>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-space-xs">
+              <label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors border border-outline-variant/30">
+                <input checked class="text-primary-container focus:ring-0" name="timepref" type="radio" value="Mañanas (7:00 a 13:00)" />
+                <span class="font-body-sm text-body-sm text-on-surface">Mañanas (7-13h)</span>
+              </label>
+
+              <label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors border border-outline-variant/30">
+                <input class="text-primary-container focus:ring-0" name="timepref" type="radio" value="Mediodía (13:00 a 16:00)" />
+                <span class="font-body-sm text-body-sm text-on-surface">Mediodía (13-16h)</span>
+              </label>
+
+              <label class="flex items-center gap-space-xs p-space-sm bg-surface-container-low cursor-pointer hover:bg-surface-container-high transition-colors border border-outline-variant/30">
+                <input class="text-primary-container focus:ring-0" name="timepref" type="radio" value="Tardes (16:00 a 22:00)" />
+                <span class="font-body-sm text-body-sm text-on-surface">Tardes (16-22h)</span>
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label class="block font-label-caps text-label-caps uppercase text-on-surface-variant mb-space-xs" for="f-notes">
+              Notas adicionales, lesiones previas o disponibilidad de días (opcional)
+            </label>
+            <textarea
+              class="w-full bg-surface-container-low text-on-surface font-body-sm px-space-md py-space-sm border border-outline-variant/60 focus:outline-none focus:border-primary-container transition-colors"
+              id="f-notes"
+              name="notes"
+              placeholder="Cuéntanos si tienes alguna molestia articular, tu experiencia previa, o los días preferidos para tu sesión de valoración..."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <button
+            class="w-full py-space-md bg-primary-container hover:bg-inverse-primary text-on-primary font-headline-md text-headline-md uppercase tracking-wider flex items-center justify-center gap-space-sm transition-colors border border-primary-container shadow-sm cursor-pointer"
+            type="submit"
+            id="btn-submit-lead"
+          >
+            <Icon name="whatsapp" size={22} />
+            <span>ENVIAR POR WHATSAPP Y RESERVAR MI VALORACIÓN</span>
+          </button>
+
+          <p class="font-label-caps text-label-caps text-outline text-center uppercase tracking-widest pt-space-xs">
+            ATENCIÓN DIRECTA · RESPUESTA RÁPIDA · NINGÚN DATO QUEDA ALMACENADO EN SERVIDORES
+          </p>
+        </form>
+      </div>
+
+      <!-- Right: Direct triage column -->
+      <div class="lg:col-span-5 flex flex-col justify-between space-y-space-md">
+        <!-- Direct Phone Card -->
+        <div class="p-space-lg bg-surface-container border border-outline-variant/30">
+          <div class="flex items-center gap-space-xs mb-space-xs">
+            <Icon name="call" class="text-primary-container" size={18} />
+            <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">ATENCIÓN TELEFÓNICA INMEDIATA</span>
+          </div>
+          <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-space-xs">
+            {centroData.telefonoFormateado}
+          </h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md leading-relaxed">
+            ¿Prefieres resolver tus dudas por teléfono? Llámanos directamente y te informamos sobre disponibilidad y grupos.
+          </p>
+          <a
+            href={`tel:${centroData.telefono}`}
+            class="inline-flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container-high hover:bg-surface-variant text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors border border-outline-variant"
+          >
+            <Icon name="call" size={16} />
+            <span>Llamar ahora</span>
+          </a>
+        </div>
+
+        <!-- WhatsApp Direct Card -->
+        <div class="p-space-lg bg-surface-container border border-outline-variant/30">
+          <div class="flex items-center gap-space-xs mb-space-xs">
+            <Icon name="whatsapp" class="text-secondary" size={18} />
+            <span class="font-label-caps text-label-caps uppercase text-outline tracking-wider">CANAL OFICIAL DE WHATSAPP</span>
+          </div>
+          <h3 class="font-headline-lg text-headline-lg uppercase text-on-surface mb-space-xs">
+            RESPUESTA EN EL DÍA
+          </h3>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md leading-relaxed">
+            Escríbenos directamente si no quieres rellenar el formulario. Atendemos consultas de horarios y precios.
+          </p>
+          <a
+            href={`https://wa.me/${centroData.whatsapp}?text=${encodeURIComponent('¡Hola ASAP Training Center! Me gustaría información sobre plazas y horarios disponibles.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-space-xs px-space-md py-space-xs bg-[#002c46] hover:bg-[#003859] text-secondary font-label-caps text-label-caps uppercase tracking-wider transition-colors border border-secondary/40"
+          >
+            <Icon name="whatsapp" size={16} />
+            <span>Abrir chat de WhatsApp</span>
+          </a>
+        </div>
+
+        <!-- Location reminder badge -->
+        <div class="p-space-md bg-surface-container-low border border-outline-variant/20 flex items-center gap-space-sm">
+          <Icon name="location_on" class="text-primary-container shrink-0" size={24} />
+          <div>
+            <span class="font-title-technical text-body-sm text-on-surface block leading-tight">
+              {centroData.direccion.textoCompleto}
+            </span>
+            <span class="font-label-caps text-[11px] text-outline uppercase">
+              Zaidín · Junto a paradas de bus y metro
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('lead-form');
+    if (!form) return;
+
+    const inputName = document.getElementById('f-name');
+    const inputPhone = document.getElementById('f-phone');
+    const selectGoal = document.getElementById('f-goal');
+    const textareaNotes = document.getElementById('f-notes');
+    const errName = document.getElementById('err-name');
+    const errPhone = document.getElementById('err-phone');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      let valid = true;
+
+      // Validar nombre
+      const nameVal = inputName.value.trim();
+      if (!nameVal || nameVal.length < 2) {
+        errName.classList.remove('hidden');
+        inputName.classList.add('border-error');
+        valid = false;
+      } else {
+        errName.classList.add('hidden');
+        inputName.classList.remove('border-error');
+      }
+
+      // Validar teléfono (al menos 9 dígitos)
+      const phoneClean = inputPhone.value.replace(/\s+/g, '').replace(/[-+]/g, '');
+      if (!phoneClean || phoneClean.length < 9) {
+        errPhone.classList.remove('hidden');
+        inputPhone.classList.add('border-error');
+        valid = false;
+      } else {
+        errPhone.classList.add('hidden');
+        inputPhone.classList.remove('border-error');
+      }
+
+      if (!valid) {
+        return;
+      }
+
+      const goalVal = selectGoal ? selectGoal.value : 'No indicado';
+      const timeprefInput = document.querySelector('input[name="timepref"]:checked');
+      const timeprefVal = timeprefInput ? timeprefInput.value : 'Flexible';
+      const notesVal = textareaNotes && textareaNotes.value.trim() ? textareaNotes.value.trim() : 'Sin observaciones previas';
+
+      const textoMensaje = `¡Hola ASAP Training Center!\n` +
+        `Quiero solicitar mi cita de valoración previa:\n\n` +
+        `• Nombre: ${nameVal}\n` +
+        `• Teléfono: ${inputPhone.value.trim()}\n` +
+        `• Objetivo / Servicio: ${goalVal}\n` +
+        `• Franja horaria preferida: ${timeprefVal}\n` +
+        `• Notas / Lesiones / Comentarios: ${notesVal}\n\n` +
+        `¿Qué disponibilidad tenéis para esta semana?`;
+
+      const whatsappUrl = `https://wa.me/34641417021?text=${encodeURIComponent(textoMensaje)}`;
+      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+    });
+  });
+</script>

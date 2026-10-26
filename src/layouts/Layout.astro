@@ -1,0 +1,101 @@
+---
+import '@fontsource/bebas-neue';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '../styles/global.css';
+
+import { centroData } from '../data/centro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+}
+
+const {
+  title = `${centroData.nombre} | Centro de Entrenamiento en el Zaidín, Granada`,
+  description = `${centroData.subtitulo} Grupos reducidos, fuerza, HYROX y readaptación de lesiones. Tel: ${centroData.telefonoFormateado}.`,
+  canonicalPath = '',
+} = Astro.props;
+
+const canonicalUrl = `${centroData.urlWeb}${canonicalPath}`;
+const ogImageUrl = `${centroData.urlWeb}/fotos/hero-box.webp`;
+
+// JSON-LD Structured Data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsActivityLocation',
+  name: centroData.nombre,
+  description: centroData.subtitulo,
+  url: centroData.urlWeb,
+  telephone: `+34${centroData.telefono}`,
+  image: ogImageUrl,
+  priceRange: '€€',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: centroData.direccion.calle,
+    addressLocality: centroData.direccion.ciudad,
+    addressRegion: centroData.direccion.provincia,
+    postalCode: centroData.direccion.codigoPostal,
+    addressCountry: 'ES',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: centroData.coordenadas.lat,
+    longitude: centroData.coordenadas.lng,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:00',
+      closes: '22:00',
+    },
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: centroData.rating.puntuacion.toString(),
+    reviewCount: centroData.rating.totalResenas.toString(),
+    bestRating: '5',
+    worstRating: '1',
+  },
+};
+---
+
+<!doctype html>
+<html lang="es" class="dark scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#121416" />
+    <link rel="preload" as="image" href="/fotos/hero-box.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={centroData.nombre} />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImageUrl} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+  </head>
+  <body class="bg-background font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container antialiased min-h-screen flex flex-col">
+    <slot />
+  </body>
+</html>

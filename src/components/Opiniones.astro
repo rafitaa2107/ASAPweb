@@ -1,0 +1,87 @@
+---
+import { centroData } from '../data/centro';
+import Icon from './Icon.astro';
+---
+
+<section class="w-full bg-surface-container py-space-xl border-t border-surface-variant" id="opiniones">
+  <div class="max-w-7xl mx-auto px-margin-mobile lg:px-margin">
+    <!-- Header with Google score badge -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-xl pb-space-md border-b border-surface-variant">
+      <div>
+        <span class="font-label-caps text-label-caps text-primary-container tracking-widest uppercase mb-space-xs block">
+          04 / CASOS REALES EN EL BOX
+        </span>
+        <h2 class="font-headline-xl text-headline-xl uppercase text-on-surface leading-none">
+          RESEÑAS VERIFICADAS EN GOOGLE
+        </h2>
+      </div>
+
+      <!-- Rating summary badge -->
+      <a
+        href={centroData.googleMaps.reviewsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-space-sm p-space-sm bg-surface hover:bg-surface-container-high transition-colors border border-outline-variant/40"
+      >
+        <div class="flex items-center text-primary-container">
+          {Array.from({ length: 5 }).map(() => (
+            <Icon name="star" size={16} />
+          ))}
+        </div>
+        <span class="font-title-technical text-title-technical text-on-surface">5.0 / 5.0</span>
+        <span class="font-label-caps text-label-caps text-outline uppercase">(+{centroData.rating.totalResenas} OPINIONES)</span>
+      </a>
+    </div>
+
+    <!-- 3 Real Testimonials Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg mb-space-lg">
+      {
+        centroData.opiniones.map((op) => (
+          <article class="bg-surface p-space-lg flex flex-col justify-between border border-outline-variant/30 hover:border-outline-variant/60 transition-colors">
+            <div>
+              <div class="flex items-center justify-between mb-space-sm">
+                <div class="flex items-center text-primary-container">
+                  {Array.from({ length: op.puntuacion }).map(() => (
+                    <Icon name="star" size={16} />
+                  ))}
+                </div>
+                <span class="font-label-caps text-[11px] text-outline uppercase">{op.tiempo}</span>
+              </div>
+
+              <blockquote class="font-body-md text-body-md text-on-surface mb-space-lg leading-relaxed italic">
+                "{op.texto}"
+              </blockquote>
+            </div>
+
+            <div class="pt-space-sm border-t border-surface-variant flex items-center justify-between">
+              <div class="flex items-center gap-space-xs">
+                <div class="w-7 h-7 bg-surface-container-highest text-on-surface flex items-center justify-center font-title-technical text-xs font-bold">
+                  {op.autor[0]}
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-title-technical text-body-sm text-on-surface">{op.autor}</span>
+                  <span class="font-label-caps text-[10px] text-secondary uppercase">Atleta ASAP</span>
+                </div>
+              </div>
+
+              <span class="font-label-caps text-[10px] text-outline uppercase">Google Maps</span>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Link to all reviews -->
+    <div class="text-center">
+      <a
+        href={centroData.googleMaps.reviewsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-space-xs text-outline hover:text-on-surface font-label-caps text-label-caps uppercase tracking-wider transition-colors"
+      >
+        <span>LEER TODAS LAS OPINIONES EN NUESTRO PERFIL DE GOOGLE</span>
+        <Icon name="arrow_forward" size={14} />
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+---
+import { centroData } from '../data/centro';
+import { scriptCalculoHorario } from '../utils/horario';
+---
+
+<div class="inline-flex items-center gap-space-xs px-space-sm py-space-xs bg-surface-container text-on-surface border border-outline-variant/30">
+  <span id="horario-estado-dot" class="w-2.5 h-2.5 rounded-full bg-tertiary-container animate-pulse"></span>
+  <span id="horario-estado-texto" class="font-label-caps text-label-caps tracking-widest uppercase text-tertiary">
+    {centroData.horario.textoResumen}
+  </span>
+</div>
+
+<script is:inline set:html={scriptCalculoHorario} />
